@@ -26,21 +26,30 @@ def fnt_selector(op):
                 estracto = input('--Estracto--\n\n1 .1\n2. 2\n-> ')
             else:
                 print ('No cuentas con la edad suficiente para realizar el registro <ENTER>')
-                list_pendiente.append(contacto)
+                list_pendiente.append([contacto])
         elif sexo == 'F':
             edad = int(input('Ingrese su edad: '))
             if (edad >= 20 and edad <= 35):
                 estracto = input('--Estracto--\n\n1 .1\n2. 2\n3. 3\n4. 4\n -> ')
             else:
                 print ('No cuentas con la edad suficiente para realizar el registro <ENTER>')
-                list_pendiente.append(contacto)        
+                list_pendiente.append([contacto])        
         fnt_añadir(registro_diccionario,codigo, nombres,contacto,correo,edad,estracto,sexo,direccion)
-
 
 
 
 while sw == True:
     os.system('cls')
     opcion = input('1. Registrar\n2. Mostrar\n3. Salir\n- >  ')
-    fnt_selector(opcion)
-
+    if opcion == "1":
+        fnt_selector(opcion)
+    elif opcion == '2':
+        os.system('cls')
+        print('\nCantidad de registros: ',len(registro_diccionario),'\n')
+        for clave, valor in registro_diccionario.items():
+            print(f"{clave}: {valor}")
+        for clave, valor in list_pendiente.items():
+            print(list_pendiente)
+        enter = input('\n\nPresione <ENTER> para continuar')
+    elif opcion == '3':
+        sw = False
